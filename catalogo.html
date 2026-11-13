@@ -1,0 +1,106 @@
+<!doctype html><html lang="es"><head><title>Catálogo · Sockbuster</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--navy:#16204f;--ink:#0d1330;--yellow:#ffc93c;--paper:#f4f6ff;--teal:#13a89a;--red:#e0344f;--line:#d5daf0}
+@media (prefers-color-scheme:dark){:root{--paper:#0d1330;--ink:#f4f6ff;--line:#2b366e}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 "DM Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+h1,h2,h3{font-family:"Bowlby One","Arial Black",sans-serif;font-weight:400;line-height:1.1;margin:0 0 .5em}
+a{color:inherit}:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+header.nav{position:sticky;top:0;z-index:10;background:var(--navy);display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);flex-wrap:wrap}
+.logo{font-family:"Bowlby One",sans-serif;color:var(--yellow);text-decoration:none;font-size:1.3rem}
+.nav nav{display:flex;gap:.3rem;flex-wrap:wrap}
+.nav nav a{color:#fff;text-decoration:none;padding:.4rem .9rem;border-radius:99px}
+.nav nav a[aria-current=page]{background:var(--yellow);color:var(--navy);font-weight:700}
+main{max-width:1100px;margin:0 auto;padding:2rem clamp(1rem,4vw,2rem)}
+.btn{display:inline-block;border:0;border-radius:8px;padding:.7rem 1.2rem;font:700 1rem "DM Sans",sans-serif;background:var(--yellow);color:var(--navy);cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:inherit;border:2px solid currentColor}
+.hero{background:var(--navy);color:#fff;padding:clamp(2.5rem,8vw,6rem) clamp(1rem,4vw,3rem);position:relative;overflow:hidden}
+.hero>div{max-width:1100px;margin:0 auto}
+.hero h1{font-size:clamp(2.6rem,9vw,6.5rem);color:var(--yellow);transform:rotate(-2deg);margin-bottom:.3em}
+.hero p{max-width:52ch;font-size:1.2rem}
+.stripes{height:14px;background:repeating-linear-gradient(90deg,var(--yellow) 0 40px,var(--teal) 40px 80px,var(--red) 80px 120px)}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.box{border:2px solid var(--line);border-radius:12px;padding:1.2rem;background:color-mix(in srgb,var(--paper) 92%,var(--ink))}
+.ticket{border:3px dashed var(--navy);border-radius:10px;padding:1rem 1.4rem;display:inline-block;background:var(--yellow);color:var(--navy);margin-top:1.5rem}
+.ticket b{display:block;font-size:1.4rem}
+footer{background:var(--navy);color:#fff;text-align:center;padding:1.5rem;margin-top:3rem}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem}
+.chip{border:2px solid var(--navy);background:transparent;color:inherit;border-radius:99px;padding:.3rem .9rem;font:600 .95rem "DM Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--navy);color:var(--yellow)}
+select,input[type=search],input[type=range]{font:inherit;padding:.4rem .6rem;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.card{border:2px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 94%,var(--ink))}
+.card .pic{display:grid;place-items:center;padding:1rem;height:170px}
+.card .body{padding:1rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card h3{font-size:1.05rem;font-family:"DM Sans";font-weight:700}
+.price{font-weight:800;font-size:1.2rem}.muted{opacity:.7;font-size:.9rem}
+.low{color:var(--red);font-weight:700}
+dialog{border:3px solid var(--navy);border-radius:14px;max-width:min(520px,94vw);background:var(--paper);color:var(--ink);padding:1.5rem}
+dialog::backdrop{background:rgba(13,19,48,.7)}
+.cartbar{position:fixed;right:1rem;bottom:1rem;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.row{display:flex;justify-content:space-between;gap:.6rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.qty button{width:28px;height:28px;border-radius:6px;border:2px solid var(--navy);background:none;color:inherit;cursor:pointer}
+.stars{color:#e8a600;letter-spacing:2px}
+.view{margin-block:3rem;scroll-margin-top:90px}
+.view>h2{background:var(--navy);color:var(--yellow);display:inline-block;padding:.35rem 1rem;border-radius:6px;font-size:1.4rem}
+.mm{overflow-x:auto;border:2px solid var(--line);border-radius:12px;padding:1rem;background:#fff;margin:1rem 0}
+.mm pre{margin:0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid var(--line);padding:.5rem;text-align:left;vertical-align:top}th{background:var(--navy);color:#fff}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="nav"><a class="logo" href="index.html">SOCKBUSTER</a><nav aria-label="Principal"><a href="index.html">Inicio</a><a href="catalogo.html" aria-current="page">Catálogo</a><a href="diagramas.html">Arquitectura UML</a></nav></header>
+<main>
+<h1>Catálogo</h1>
+<div class="tools" id="cats" role="group" aria-label="Colecciones"></div>
+<div class="tools">
+<input type="search" id="q" placeholder="Buscar calcetín" aria-label="Buscar">
+<select id="size" aria-label="Talla"><option value="">Todas las tallas</option><option>S</option><option>M</option><option>L</option></select>
+<select id="sort" aria-label="Ordenar"><option value="">Ordenar</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select>
+<label>Hasta <output id="pv">10.000</output> <input type="range" id="max" min="7000" max="10000" step="500" value="10000"></label>
+</div>
+<p class="muted" id="count" aria-live="polite"></p>
+<div class="grid" id="grid"></div>
+</main>
+<button class="btn cartbar" id="open-cart">Carrito (<span id="n">0</span>)</button>
+<dialog id="det"></dialog><dialog id="cart"></dialog>
+<footer>© 2026 Sockbuster · Benjamín Samhueza</footer>
+<script>
+const P=[
+["Abducción Galáctica","Ciencia Ficción",8990,12,["S","M","L"],"#13a89a","#16204f","Platillos voladores sobre un campo de maíz. Homenaje a los clásicos de invasión alienígena.",4.6],
+["Nostromo 79","Ciencia Ficción",9490,3,["M","L"],"#5a6bb0","#ffc93c","Para quienes saben que en el espacio nadie te oye gritar. Tejido térmico.",4.8],
+["Replicante Neón","Ciencia Ficción",9990,8,["S","M"],"#e0344f","#13a89a","Lluvia, neón y un unicornio de origami en el tobillo.",4.5],
+["Cinta Maldita","Terror 80s",8490,15,["S","M","L"],"#222","#e0344f","Estampado de cinta VHS. Rebobinar antes de lavar.",4.4],
+["Campamento Luna Roja","Terror 80s",8990,0,["M","L"],"#8a1c2e","#f4f6ff","Lago, fogata y una máscara que no conviene mirar de frente.",4.7],
+["Pasillo Gemelas","Terror 80s",9490,6,["S","M"],"#3a5bd9","#f4f6ff","Un pasillo de hotel con dos pequeñas figuras al fondo.",4.9],
+["Clan Mafioso","Series de Drama",9290,10,["M","L"],"#2d2d2d","#ffc93c","Cena familiar con negocios pendientes. Diseño de lujo.",4.6],
+["Laboratorio Azul","Series de Drama",9790,5,["S","M","L"],"#2a7de1","#f4f6ff","Química pura: cristales azules y delantal de profesor.",4.8],
+["Herederos Corp.","Series de Drama",9190,9,["M","L"],"#7a5c3a","#f4f6ff","Poder, traiciones y reuniones de directorio interminables.",4.3],
+["Robot Cocinero","Animación",8290,20,["S","M","L"],"#ffc93c","#e0344f","Una rata chef, un robot y mucho sabor. Para fans de todas las edades.",4.7],
+["Pez Perdido","Animación",7990,14,["S","M"],"#ff8a3d","#2a7de1","Un pez payaso cruza el océano. Suela antideslizante.",4.5],
+["Viaje Mágico","Animación",8490,2,["S","M","L"],"#9b5de5","#ffc93c","Casas voladoras y globos de colores en puntera y talón.",4.6]
+].map((a,i)=>({id:i+1,name:a[0],cat:a[1],price:a[2],stock:a[3],sizes:a[4],c1:a[5],c2:a[6],desc:a[7],rating:a[8]}));
+const $=s=>document.querySelector(s),clp=n=>"$"+n.toLocaleString("es-CL");
+let cat="Todas",cart={};
+const cats=["Todas",...new Set(P.map(p=>p.cat))];
+$("#cats").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c==cat}">${c}</button>`).join("");
+$("#cats").onclick=e=>{if(e.target.tagName!="BUTTON")return;cat=e.target.textContent;[...$("#cats").children].forEach(b=>b.setAttribute("aria-pressed",b.textContent==cat));render()};
+["q","size","sort","max"].forEach(i=>$("#"+i).oninput=()=>{$("#pv").textContent=(+$("#max").value).toLocaleString("es-CL");render()});
+const sock=(a,b)=>`<svg viewBox="0 0 110 130" width="110" role="img" aria-label="Calcetín"><path d="M30 4h38v66h30q12 0 12 14v14q0 16-16 16H42q-12 0-12-14z" fill="${a}"/><rect x="30" y="4" width="38" height="18" fill="${b}"/><path d="M30 34h38v6H30zM30 48h38v6H30z" fill="${b}" opacity=".85"/><path d="M76 108h24q0-10-12-10h-12z" fill="${b}"/></svg>`;
+const stars=r=>`<span class="stars" aria-label="${r} de 5">${"★".repeat(Math.round(r))}${"☆".repeat(5-Math.round(r))}</span>`;
+function render(){
+ let l=P.filter(p=>(cat=="Todas"||p.cat==cat)&&p.name.toLowerCase().includes($("#q").value.toLowerCase())&&(!$("#size").value||p.sizes.includes($("#size").value))&&p.price<=+$("#max").value);
+ if($("#sort").value)l.sort((a,b)=>$("#sort").value=="asc"?a.price-b.price:b.price-a.price);
+ $("#count").textContent=l.length+" producto(s)";
+ $("#grid").innerHTML=l.length?l.map(p=>`<article class="card"><div class="pic" style="background:${p.c1}22">${sock(p.c1,p.c2)}</div><div class="body"><span class="muted">${p.cat}</span><h3>${p.name}</h3><span class="price">${clp(p.price)}</span><span class="${p.stock<4?"low":"muted"}">${p.stock?`Stock: ${p.stock}`:"Agotado"}</span><div style="margin-top:auto;display:flex;gap:.4rem"><button class="btn alt" onclick="detail(${p.id})">Detalles</button><button class="btn" ${p.stock?"":"disabled"} onclick="add(${p.id})">Agregar</button></div></div></article>`).join(""):"<p>No hay calcetines con esos filtros. Prueba ampliar el precio o la talla.</p>";
+}
+function detail(id){const p=P.find(x=>x.id==id);$("#det").innerHTML=`<h2>${p.name}</h2><div style="text-align:center">${sock(p.c1,p.c2)}</div><p>${p.desc}</p><p>${stars(p.rating)} ${p.rating}/5 · ${p.cat}</p><p>Tallas: ${p.sizes.join(", ")} · ${p.stock?`Stock: ${p.stock}`:"Agotado"}</p><p class="price">${clp(p.price)}</p><form method="dialog"><button class="btn alt">Cerrar</button></form>`;$("#det").showModal()}
+function add(id){const p=P.find(x=>x.id==id);cart[id]=Math.min((cart[id]||0)+1,p.stock);upd()}
+function chg(id,d){const p=P.find(x=>x.id==id);cart[id]=Math.max(0,Math.min((cart[id]||0)+d,p.stock));if(!cart[id])delete cart[id];upd();showCart()}
+const total=()=>Object.entries(cart).reduce((s,[id,q])=>s+P[id-1].price*q,0);
+function upd(){$("#n").textContent=Object.values(cart).reduce((a,b)=>a+b,0)}
+function showCart(){const e=Object.entries(cart);$("#cart").innerHTML=`<h2>Tu carrito</h2>`+(e.length?e.map(([id,q])=>`<div class="row"><span>${P[id-1].name}</span><span class="qty"><button onclick="chg(${id},-1)" aria-label="Quitar uno">−</button> ${q} <button onclick="chg(${id},1)" aria-label="Agregar uno">+</button></span><b>${clp(P[id-1].price*q)}</b></div>`).join("")+`<p class="price">Total: ${clp(total())}</p><button class="btn" onclick="pay()">Pagar (simulado)</button> `:"<p>Aún no agregas calcetines.</p>")+`<form method="dialog" style="display:inline"><button class="btn alt">Cerrar</button></form>`;if(!$("#cart").open)$("#cart").showModal()}
+function pay(){const id="SB-"+Date.now().toString(36).toUpperCase(),e=Object.entries(cart);
+ $("#cart").innerHTML=`<h2>Pedido confirmado</h2><p>Identificador: <b>${id}</b></p>`+e.map(([i,q])=>`<div class="row"><span>${q} × ${P[i-1].name}</span><b>${clp(P[i-1].price*q)}</b></div>`).join("")+`<p class="price">Total: ${clp(total())}</p><p class="muted">Pago simulado: no se realizó ningún cobro.</p><form method="dialog"><button class="btn">Seguir comprando</button></form>`;
+ e.forEach(([i,q])=>P[i-1].stock-=q);cart={};upd();render()}
+$("#open-cart").onclick=showCart;render();
+</script></body></html>

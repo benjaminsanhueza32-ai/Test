@@ -1,0 +1,69 @@
+<!doctype html><html lang="es"><head><title>Sockbuster Video & Socks</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--navy:#16204f;--ink:#0d1330;--yellow:#ffc93c;--paper:#f4f6ff;--teal:#13a89a;--red:#e0344f;--line:#d5daf0}
+@media (prefers-color-scheme:dark){:root{--paper:#0d1330;--ink:#f4f6ff;--line:#2b366e}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 "DM Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+h1,h2,h3{font-family:"Bowlby One","Arial Black",sans-serif;font-weight:400;line-height:1.1;margin:0 0 .5em}
+a{color:inherit}:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+header.nav{position:sticky;top:0;z-index:10;background:var(--navy);display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);flex-wrap:wrap}
+.logo{font-family:"Bowlby One",sans-serif;color:var(--yellow);text-decoration:none;font-size:1.3rem}
+.nav nav{display:flex;gap:.3rem;flex-wrap:wrap}
+.nav nav a{color:#fff;text-decoration:none;padding:.4rem .9rem;border-radius:99px}
+.nav nav a[aria-current=page]{background:var(--yellow);color:var(--navy);font-weight:700}
+main{max-width:1100px;margin:0 auto;padding:2rem clamp(1rem,4vw,2rem)}
+.btn{display:inline-block;border:0;border-radius:8px;padding:.7rem 1.2rem;font:700 1rem "DM Sans",sans-serif;background:var(--yellow);color:var(--navy);cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:inherit;border:2px solid currentColor}
+.hero{background:var(--navy);color:#fff;padding:clamp(2.5rem,8vw,6rem) clamp(1rem,4vw,3rem);position:relative;overflow:hidden}
+.hero>div{max-width:1100px;margin:0 auto}
+.hero h1{font-size:clamp(2.6rem,9vw,6.5rem);color:var(--yellow);transform:rotate(-2deg);margin-bottom:.3em}
+.hero p{max-width:52ch;font-size:1.2rem}
+.stripes{height:14px;background:repeating-linear-gradient(90deg,var(--yellow) 0 40px,var(--teal) 40px 80px,var(--red) 80px 120px)}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.box{border:2px solid var(--line);border-radius:12px;padding:1.2rem;background:color-mix(in srgb,var(--paper) 92%,var(--ink))}
+.ticket{border:3px dashed var(--navy);border-radius:10px;padding:1rem 1.4rem;display:inline-block;background:var(--yellow);color:var(--navy);margin-top:1.5rem}
+.ticket b{display:block;font-size:1.4rem}
+footer{background:var(--navy);color:#fff;text-align:center;padding:1.5rem;margin-top:3rem}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem}
+.chip{border:2px solid var(--navy);background:transparent;color:inherit;border-radius:99px;padding:.3rem .9rem;font:600 .95rem "DM Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--navy);color:var(--yellow)}
+select,input[type=search],input[type=range]{font:inherit;padding:.4rem .6rem;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.card{border:2px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 94%,var(--ink))}
+.card .pic{display:grid;place-items:center;padding:1rem;height:170px}
+.card .body{padding:1rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card h3{font-size:1.05rem;font-family:"DM Sans";font-weight:700}
+.price{font-weight:800;font-size:1.2rem}.muted{opacity:.7;font-size:.9rem}
+.low{color:var(--red);font-weight:700}
+dialog{border:3px solid var(--navy);border-radius:14px;max-width:min(520px,94vw);background:var(--paper);color:var(--ink);padding:1.5rem}
+dialog::backdrop{background:rgba(13,19,48,.7)}
+.cartbar{position:fixed;right:1rem;bottom:1rem;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.row{display:flex;justify-content:space-between;gap:.6rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.qty button{width:28px;height:28px;border-radius:6px;border:2px solid var(--navy);background:none;color:inherit;cursor:pointer}
+.stars{color:#e8a600;letter-spacing:2px}
+.view{margin-block:3rem;scroll-margin-top:90px}
+.view>h2{background:var(--navy);color:var(--yellow);display:inline-block;padding:.35rem 1rem;border-radius:6px;font-size:1.4rem}
+.mm{overflow-x:auto;border:2px solid var(--line);border-radius:12px;padding:1rem;background:#fff;margin:1rem 0}
+.mm pre{margin:0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid var(--line);padding:.5rem;text-align:left;vertical-align:top}th{background:var(--navy);color:#fff}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="nav"><a class="logo" href="index.html">SOCKBUSTER</a><nav aria-label="Principal"><a href="index.html" aria-current="page">Inicio</a><a href="catalogo.html" >Catálogo</a><a href="diagramas.html" >Arquitectura UML</a></nav></header>
+<section class="hero"><div>
+<h1>Sockbuster<br>Video &amp; Socks</h1>
+<p>Calcetines temáticos inspirados en películas clásicas, series de culto y cultura pop. Rebobina tu cine favorito, ahora en tus pies.</p>
+<p><a class="btn" href="catalogo.html">Ver catálogo</a> <a class="btn alt" href="diagramas.html">Ver arquitectura UML</a></p>
+<div class="ticket"><span>Actividad desarrollada por</span><b>Benjamín Samhueza</b></div>
+</div></section><div class="stripes"></div>
+<main>
+<h2>Cuatro colecciones, un solo videoclub</h2>
+<div class="grid">
+<div class="box"><h3>Ciencia Ficción</h3><p>Naves, replicantes y abducciones para viajar sin salir del sofá.</p></div>
+<div class="box"><h3>Terror 80s</h3><p>Cintas malditas y campamentos de verano con muy mala suerte.</p></div>
+<div class="box"><h3>Series de Drama</h3><p>Clanes, laboratorios y mafias: el maratón completo en tus tobillos.</p></div>
+<div class="box"><h3>Animación</h3><p>Personajes entrañables para fanáticos de todas las edades.</p></div>
+</div>
+<h2 style="margin-top:2.5rem">El proyecto</h2>
+<p style="max-width:70ch">Prototipo web de la tienda en línea Sockbuster, desarrollado para la Evaluación Sumativa 03 de <b>Modelamiento de soluciones informáticas (TI3025)</b>, Ingeniería en Informática. Incluye un catálogo interactivo con carrito y checkout simulado, y la documentación de arquitectura bajo el paradigma de vistas 4+1.</p>
+</main>
+<footer>© 2026 Sockbuster Video &amp; Socks · Desarrollado por Benjamín Samhueza</footer>
+</body></html>

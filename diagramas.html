@@ -1,0 +1,252 @@
+<!doctype html><html lang="es"><head><title>Arquitectura UML 4+1 · Sockbuster</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--navy:#16204f;--ink:#0d1330;--yellow:#ffc93c;--paper:#f4f6ff;--teal:#13a89a;--red:#e0344f;--line:#d5daf0}
+@media (prefers-color-scheme:dark){:root{--paper:#0d1330;--ink:#f4f6ff;--line:#2b366e}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 "DM Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+h1,h2,h3{font-family:"Bowlby One","Arial Black",sans-serif;font-weight:400;line-height:1.1;margin:0 0 .5em}
+a{color:inherit}:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+header.nav{position:sticky;top:0;z-index:10;background:var(--navy);display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);flex-wrap:wrap}
+.logo{font-family:"Bowlby One",sans-serif;color:var(--yellow);text-decoration:none;font-size:1.3rem}
+.nav nav{display:flex;gap:.3rem;flex-wrap:wrap}
+.nav nav a{color:#fff;text-decoration:none;padding:.4rem .9rem;border-radius:99px}
+.nav nav a[aria-current=page]{background:var(--yellow);color:var(--navy);font-weight:700}
+main{max-width:1100px;margin:0 auto;padding:2rem clamp(1rem,4vw,2rem)}
+.btn{display:inline-block;border:0;border-radius:8px;padding:.7rem 1.2rem;font:700 1rem "DM Sans",sans-serif;background:var(--yellow);color:var(--navy);cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:inherit;border:2px solid currentColor}
+.hero{background:var(--navy);color:#fff;padding:clamp(2.5rem,8vw,6rem) clamp(1rem,4vw,3rem);position:relative;overflow:hidden}
+.hero>div{max-width:1100px;margin:0 auto}
+.hero h1{font-size:clamp(2.6rem,9vw,6.5rem);color:var(--yellow);transform:rotate(-2deg);margin-bottom:.3em}
+.hero p{max-width:52ch;font-size:1.2rem}
+.stripes{height:14px;background:repeating-linear-gradient(90deg,var(--yellow) 0 40px,var(--teal) 40px 80px,var(--red) 80px 120px)}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.box{border:2px solid var(--line);border-radius:12px;padding:1.2rem;background:color-mix(in srgb,var(--paper) 92%,var(--ink))}
+.ticket{border:3px dashed var(--navy);border-radius:10px;padding:1rem 1.4rem;display:inline-block;background:var(--yellow);color:var(--navy);margin-top:1.5rem}
+.ticket b{display:block;font-size:1.4rem}
+footer{background:var(--navy);color:#fff;text-align:center;padding:1.5rem;margin-top:3rem}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem}
+.chip{border:2px solid var(--navy);background:transparent;color:inherit;border-radius:99px;padding:.3rem .9rem;font:600 .95rem "DM Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--navy);color:var(--yellow)}
+select,input[type=search],input[type=range]{font:inherit;padding:.4rem .6rem;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.card{border:2px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 94%,var(--ink))}
+.card .pic{display:grid;place-items:center;padding:1rem;height:170px}
+.card .body{padding:1rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card h3{font-size:1.05rem;font-family:"DM Sans";font-weight:700}
+.price{font-weight:800;font-size:1.2rem}.muted{opacity:.7;font-size:.9rem}
+.low{color:var(--red);font-weight:700}
+dialog{border:3px solid var(--navy);border-radius:14px;max-width:min(520px,94vw);background:var(--paper);color:var(--ink);padding:1.5rem}
+dialog::backdrop{background:rgba(13,19,48,.7)}
+.cartbar{position:fixed;right:1rem;bottom:1rem;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.row{display:flex;justify-content:space-between;gap:.6rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.qty button{width:28px;height:28px;border-radius:6px;border:2px solid var(--navy);background:none;color:inherit;cursor:pointer}
+.stars{color:#e8a600;letter-spacing:2px}
+.view{margin-block:3rem;scroll-margin-top:90px}
+.view>h2{background:var(--navy);color:var(--yellow);display:inline-block;padding:.35rem 1rem;border-radius:6px;font-size:1.4rem}
+.mm{overflow-x:auto;border:2px solid var(--line);border-radius:12px;padding:1rem;background:#fff;margin:1rem 0}
+.mm pre{margin:0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid var(--line);padding:.5rem;text-align:left;vertical-align:top}th{background:var(--navy);color:#fff}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="nav"><a class="logo" href="index.html">SOCKBUSTER</a><nav aria-label="Principal"><a href="index.html">Inicio</a><a href="catalogo.html">Catálogo</a><a href="diagramas.html" aria-current="page">Arquitectura UML</a></nav></header>
+<main>
+<h1>Arquitectura UML · Modelo 4+1</h1>
+<p style="max-width:70ch">Documentación técnica de Sockbuster organizada por las cinco vistas de Kruchten. Cada vista responde a los requisitos funcionales (RF01–RF04) y no funcionales (RNF01–RNF02) del caso de estudio.</p>
+<nav class="toc" aria-label="Vistas"><a class="chip" href="#logica">Lógica</a><a class="chip" href="#desarrollo">Desarrollo</a><a class="chip" href="#procesos">Procesos</a><a class="chip" href="#fisica">Física</a><a class="chip" href="#escenarios">Escenarios</a></nav>
+
+<section class="view" id="logica"><h2>Vista Lógica</h2>
+<p>Modela el dominio con un diagrama de clases: usuarios (cliente y administrador), temáticas, calcetines, carrito, pedidos y reseñas, con sus atributos, métodos y multiplicidades. Cubre RF01–RF04.</p>
+<div class="mm"><pre class="mermaid">
+classDiagram
+class Usuario{
+&lt;&lt;abstract&gt;&gt;
++int id
++String nombre
++String email
++login() Token
+}
+class Cliente{
++resenar(calcetin, estrellas, texto)
+}
+class Administrador{
++registrarCalcetin()
++actualizarStock()
++modificarPrecio()
+}
+class Tematica{
++int id
++String titulo
++String categoria
+}
+class Calcetin{
++int id
++String nombre
++double precio
++int stock
++List~String~ tallas
++String foto
+}
+class Carrito{
++agregar(calcetin)
++modificarCantidad(item, n)
++total() double
+}
+class Pedido{
++String idUnico
++Date fecha
++double total
++String estado
++confirmarPago()
+}
+class ItemPedido{
++int cantidad
++double subtotal
+}
+class Resena{
++int estrellas
++String comentario
++Date fecha
+}
+Usuario &lt;|-- Cliente
+Usuario &lt;|-- Administrador
+Tematica "1" --> "1..*" Calcetin : inspira
+Cliente "1" --> "1" Carrito : tiene
+Carrito "1" o-- "*" ItemPedido
+Cliente "1" --> "*" Pedido : realiza
+Pedido "1" *-- "1..*" ItemPedido
+ItemPedido "*" --> "1" Calcetin
+Cliente "1" --> "*" Resena : publica
+Calcetin "1" --> "*" Resena : recibe
+Administrador ..> Calcetin : gestiona
+</pre></div></section>
+
+<section class="view" id="desarrollo"><h2>Vista de Desarrollo</h2>
+<p>Organiza el código en subsistemas: el cliente web estático (las 3 páginas, estilos y módulo JavaScript), la API REST con sus servicios y la capa de datos. El cliente solo habla con la API por HTTPS y JSON. Los servicios de la API son el diseño objetivo; el prototipo entregado simula esa capa en el navegador.</p>
+<div class="mm"><pre class="mermaid">
+flowchart LR
+subgraph FE["Cliente web (prototipo)"]
+A["index.html"]
+B["catalogo.html"]
+C["diagramas.html"]
+D["CSS incrustado en cada HTML"]
+E["Módulo JS: filtros, carrito, checkout"]
+end
+subgraph BE["API REST (diseño)"]
+F["AuthController (JWT)"]
+G["CatalogoService"]
+H["PedidoService"]
+I["ResenaService"]
+J["InventarioService"]
+end
+subgraph DT["Datos"]
+K[("Base de datos")]
+end
+A --> D
+B --> D
+C --> D
+B --> E
+E -->|"HTTPS / JSON"| F
+E -->|"HTTPS / JSON"| G
+E -->|"HTTPS / JSON"| H
+E -->|"HTTPS / JSON"| I
+F -.->|"autoriza"| J
+H --> J
+G --> K
+H --> K
+I --> K
+J --> K
+</pre></div></section>
+
+<section class="view" id="procesos"><h2>Vista de Procesos</h2>
+<p>Describe la dinámica de los procesos clave. El checkout verifica el stock antes de confirmar; si dos clientes compran la última unidad a la vez, la verificación y el descuento se ejecutan en una misma transacción y el segundo recibe un error 409. El filtrado se ejecuta solo en el cliente, sin bloquear la carga inicial.</p>
+<h3 style="font-size:1.1rem;font-family:'DM Sans';font-weight:800">Checkout (RF02)</h3>
+<div class="mm"><pre class="mermaid">
+sequenceDiagram
+actor C as Cliente
+participant UI as Interfaz web
+participant API as API REST
+participant Inv as InventarioService
+participant DB as Base de datos
+C->>UI: Pulsa Pagar
+UI->>API: POST /pedidos (JWT)
+API->>Inv: verificarStock(items)
+Inv->>DB: Consulta stock (transacción)
+DB-->>Inv: Stock actual
+alt Hay stock
+Inv-->>API: OK
+API->>DB: Guarda pedido e items
+API->>Inv: descontarStock()
+API-->>UI: 201 con idPedido
+UI-->>C: Resumen del pedido
+else Sin stock
+API-->>UI: 409 Stock insuficiente
+UI-->>C: Mensaje de error
+end
+</pre></div>
+<h3 style="font-size:1.1rem;font-family:'DM Sans';font-weight:800">Filtrado del catálogo (RF01)</h3>
+<div class="mm"><pre class="mermaid">
+flowchart TD
+S(("Inicio")) --> A["Cliente abre el catálogo"]
+A --> B["Se cargan los calcetines"]
+B --> C{"¿Aplica filtros?"}
+C -->|Sí| D["Filtrar por colección, talla, precio y texto"]
+D --> E["Ordenar por precio"]
+E --> F["Mostrar tarjetas con precio, stock y tallas"]
+C -->|No| F
+F --> G(("Fin"))
+</pre></div></section>
+
+<section class="view" id="fisica"><h2>Vista Física (Despliegue)</h2>
+<p>Muestra la topología de ejecución. Los archivos estáticos se sirven desde un hosting con CDN (RNF01, carga inicial menor a 2 s). Todo el tráfico va por HTTPS y las funciones de administración exigen un token JWT (RNF02).</p>
+<div class="mm"><pre class="mermaid">
+flowchart LR
+U["Nodo cliente: navegador PC o móvil"]
+AD["Nodo administrador: navegador"]
+CDN["Hosting estático + CDN: HTML, CSS, JS"]
+GW["Servidor web / Gateway TLS"]
+APP["Servidor de aplicación: API REST"]
+DB[("Servidor de base de datos")]
+U -->|"HTTPS 443"| CDN
+U -->|"HTTPS 443"| GW
+AD -->|"HTTPS 443 + JWT"| GW
+GW --> APP
+APP -->|"Red privada"| DB
+</pre></div></section>
+
+<section class="view" id="escenarios"><h2>Escenarios (Casos de uso)</h2>
+<p>La quinta vista une las otras cuatro: cada caso de uso se valida recorriendo las clases, componentes, procesos y nodos que lo hacen posible.</p>
+<div class="mm"><pre class="mermaid">
+flowchart LR
+C(["Cliente"])
+A(["Administrador"])
+subgraph SYS["Sistema Sockbuster"]
+U1["CU1 Explorar y filtrar catálogo"]
+U2["CU2 Gestionar carrito"]
+U3["CU3 Pagar y generar pedido"]
+U4["CU4 Publicar reseña"]
+U5["CU5 Administrar inventario y temáticas"]
+U6["CU6 Autenticarse (JWT)"]
+end
+C --- U1
+C --- U2
+C --- U3
+C --- U4
+A --- U5
+U4 -.->|incluye| U6
+U5 -.->|incluye| U6
+U3 -.->|extiende| U2
+</pre></div>
+<div style="overflow-x:auto"><table>
+<caption style="text-align:left;font-weight:800;padding:.4rem 0">Trazabilidad entre escenarios, vistas y requisitos</caption>
+<tr><th>Escenario</th><th>Lógica</th><th>Desarrollo</th><th>Procesos</th><th>Física</th><th>Requisito</th></tr>
+<tr><td>CU1 Explorar y filtrar</td><td>Tematica, Calcetin</td><td>catalogo.html + JS, CatalogoService</td><td>Filtrado</td><td>CDN</td><td>RF01, RNF01</td></tr>
+<tr><td>CU2 Gestionar carrito</td><td>Carrito, ItemPedido</td><td>Módulo JS</td><td>Checkout (inicio)</td><td>Navegador</td><td>RF02</td></tr>
+<tr><td>CU3 Pagar</td><td>Pedido, ItemPedido</td><td>PedidoService, InventarioService</td><td>Checkout</td><td>API + BD</td><td>RF02, RNF02</td></tr>
+<tr><td>CU4 Reseña</td><td>Resena, Cliente</td><td>ResenaService</td><td>Verificación de sesión</td><td>API + BD</td><td>RF04, RNF02</td></tr>
+<tr><td>CU5 Administrar</td><td>Administrador, Calcetin</td><td>InventarioService, AuthController</td><td>Validación de token</td><td>Gateway TLS + API</td><td>RF03, RNF02</td></tr>
+</table></div></section>
+</main>
+<footer>© 2026 Sockbuster · Documentación elaborada por Benjamín Samhueza</footer>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral",securityLevel:"loose"})</script>
+</body></html>
